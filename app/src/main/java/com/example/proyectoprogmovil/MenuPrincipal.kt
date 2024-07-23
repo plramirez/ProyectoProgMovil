@@ -1,6 +1,8 @@
 package com.example.proyectoprogmovil
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +13,34 @@ class MenuPrincipal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_menu_principal)
+
+        val btnEventosAcademicos: Button = findViewById(R.id.btnAcademicEvents)
+        val btnEventosCulturales: Button = findViewById(R.id.btnCulturalEvents)
+        val btnMapaCampus: Button = findViewById(R.id.btnCampusMap)
+
+        btnEventosAcademicos.setOnClickListener { navigateToEventosAcademicos() }
+        btnEventosCulturales.setOnClickListener { navigateToEventosCulturales() }
+        btnMapaCampus.setOnClickListener { navigateToMapaCampus() }
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+    private fun navigateToEventosAcademicos(){
+        val intent = Intent(this, EventosAcademicosActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToEventosCulturales(){
+        val intent = Intent(this, EventosCulturalesActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToMapaCampus(){
+        val intent = Intent(this, MapaCampusActivity::class.java)
+        startActivity(intent)
     }
 }

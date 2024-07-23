@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewEventosCulturalesContainer"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="12dp"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="16dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/rose">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="14dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvEventoCulturalNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            tools:text="Nombre del Evento">
+
+        </TextView>
+
+        <View
+            android:id="@+id/divider"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="2dp">
+
+        </View>
+
+        <TextView
+            android:id="@+id/tvEventoCulturalDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            tools:text="Descripcion del Evento">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvEventoCulturalFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                tools:text="25/07/2024">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvEventoCulturalHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                tools:text=" 8:00 AM">
+
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvEventoCulturalLugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            tools:text="Lugar del evento">
+
+        </TextView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
