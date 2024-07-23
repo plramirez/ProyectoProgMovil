@@ -12,8 +12,9 @@ class EventosCulturalesActivity : AppCompatActivity() {
 
 
     private val eventosCulturales = mutableListOf(
-        EventoCultural("Rock Mundial", "Un evento muy bacano de rock.", "En la explanada", "24/07/2024", "6:00PM"),
-        EventoCultural("Rock sdasdasdasdMundial", "Un evento muy bacano sadasdasdasdde rock.", "En laasdasdasdasd explanada", "24/07/2024", "6:00PM")
+        EventoCultural("Concierto de Rock", "Conmemoramos la Independencia de los Estados Unidos con un épico concierto de rock en nuestra sede principal de la Av. Abraham Lincoln.", "Plaza del Estudiante", "03/07/2024 ", "6:00PM"),
+        EventoCultural("Celebrar la Dominicanidad", "¡Celebra la dominicanidad con nosotros! La Dirección Cultural del Instituto Cultural Domínico Americano te invita a formar parte de esta actividad en el Mes de la Independencia de la República Dominicana, con el apoyo de la Dirección General de Bellas Artes.", "Auditorio Patrick N. Hughson", "24/07/2024", "6:00PM"),
+        EventoCultural("Navidad y Teatro", "El Instituto Cultural Domínico Americano, desde su Dirección Cultural, les invita a una celebración especial de cierre de año,", "Auditorio Patrick N. Hughson", "24/07/2024", "6:00PM")
     )
 
     private lateinit var rvEventosCulturales: RecyclerView
