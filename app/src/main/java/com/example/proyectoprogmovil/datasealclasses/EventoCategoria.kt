@@ -1,4 +1,4 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.datasealclasses
 
 sealed class EventoCategoria(var isSelected: Boolean = true) {
     object Conferencias: EventoCategoria()

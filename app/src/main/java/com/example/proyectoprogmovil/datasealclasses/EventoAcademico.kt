@@ -1,4 +1,4 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.datasealclasses
 
 data class EventoAcademico(
     val eventName: String,

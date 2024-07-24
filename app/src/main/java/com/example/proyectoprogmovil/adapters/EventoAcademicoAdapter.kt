@@ -1,8 +1,11 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
+import com.example.proyectoprogmovil.viewholders.EventosAcademicosViewHolder
+import com.example.proyectoprogmovil.R
 
 class EventosAcademicosAdapter(var eventosAcademicos: List<EventoAcademico>): RecyclerView.Adapter<EventosAcademicosViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventosAcademicosViewHolder {

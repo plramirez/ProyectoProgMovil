@@ -1,11 +1,12 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.viewholders
 
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.example.proyectoprogmovil.datasealclasses.EventoCategoria
+import com.example.proyectoprogmovil.R
 
 class CategoriasViewHolder (view: View): RecyclerView.ViewHolder(view) {
 

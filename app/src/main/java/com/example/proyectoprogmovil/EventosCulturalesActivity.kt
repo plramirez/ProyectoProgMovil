@@ -7,6 +7,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectoprogmovil.adapters.EventosCulturalesAdapter
+import com.example.proyectoprogmovil.datasealclasses.EventoCultural
 
 class EventosCulturalesActivity : AppCompatActivity() {
 
@@ -18,7 +20,7 @@ class EventosCulturalesActivity : AppCompatActivity() {
     )
 
     private lateinit var rvEventosCulturales: RecyclerView
-    private lateinit var eventosCulturalesAdapter:EventosCulturalesAdapter
+    private lateinit var eventosCulturalesAdapter: EventosCulturalesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
