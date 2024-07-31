@@ -8,6 +8,7 @@
     android:background="#DDFFE6E7"
     tools:context=".MapaCampusActivity">
 
+<!--    Titulo-->
     <TextView
         android:id="@+id/tvMapaCampusLabel"
         android:layout_width="match_parent"
@@ -70,72 +71,7 @@
         android:layout_marginVertical="15dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginBottom="25dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvAmericanEnglishLounge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📌 American English Lounge"
-                android:textColor="@color/black"
-                android:textStyle="bold">
-            </TextView>
-
-            <View
-                android:layout_width="45dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tvBibliotecaLincoln"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:text="📖​ Biblioteca Lincoln"
-                android:textColor="@color/black"
-                android:textStyle="bold">
-            </TextView>
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginBottom="25dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvAuditorio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🎓 Auditorio Patrick N. Hughson"
-                android:textColor="@color/black"
-                android:textStyle="bold">
-            </TextView>
-
-            <View
-                android:layout_width="45dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1" />
-
-            <TextView
-                android:id="@+id/tvMakerSpace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="⌨️ Maker Space"
-                android:textColor="@color/black"
-                android:textStyle="bold">
-            </TextView>
-        </LinearLayout>
-
+        <!--    Primera Fila-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -168,7 +104,7 @@
             </TextView>
         </LinearLayout>
 
-
+<!--Segunda Fila-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -202,7 +138,7 @@
         </LinearLayout>
 
 
-
+<!--Tercera Fila-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -229,18 +165,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:text="🚗 Parqueo Edificio E"
+                android:text="🏎️​ Parqueo Edificio E"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
         </LinearLayout>
 
-
+<!--Cuarta Fila-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="25dp"
             android:orientation="horizontal">
 
             <TextView
@@ -269,6 +205,76 @@
 
         </LinearLayout>
 
+<!--Quinta Fila-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvBibliotecaLincoln"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📖​ Biblioteca Lincoln"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="2" />
+
+            <TextView
+                android:id="@+id/tvAmericanEnglishLounge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📌 American English Lounge"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+
+        </LinearLayout>
+
+<!--Sexta Fila-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAuditorio"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:text="🎓 Auditorio Patrick N. Hughson"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.1" />
+
+            <TextView
+                android:id="@+id/tvMakerSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="⌨️ Maker Space"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+<!--Indicaciones-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -288,5 +294,168 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/flAmericanEnglishLounge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivAmericanEnglishLounge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_american_english_lounge">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flAuditorioPatrick"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_auditorio_patrick">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flBibliotecaLincoln"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_biblioteca_lincoln">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flCafeteriaEdificioA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_cafeteria_edificioa">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flEdificioA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_edificioa">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flEdificioE"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_edificioe">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flMarkerSpace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_marker_space">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flParqueoEdificioE"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_parqueo_edificioe">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flPlazaEstudiantil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_plaza_estudiantil">
+        </ImageView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flRecordingStudio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C9FFFFFF"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/iv_recording_studio">
+        </ImageView>
+    </FrameLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
