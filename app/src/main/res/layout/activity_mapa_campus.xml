@@ -5,6 +5,288 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DDFFE6E7"
     tools:context=".MapaCampusActivity">
+
+    <TextView
+        android:id="@+id/tvMapaCampusLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Mapa Del Campus"
+        android:textSize="24dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:letterSpacing="0.1"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1.5"
+        android:textColor="@color/blue">
+
+    </TextView>
+
+    <com.example.proyectoprogmovil.ZoomImageView
+        android:id="@+id/ivMapaCampus"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:scaleType="matrix"
+        app:layout_constraintTop_toBottomOf="@+id/tvMapaCampusLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/mapa_campus_leyendas">
+
+    </com.example.proyectoprogmovil.ZoomImageView>
+
+    <TextView
+        android:id="@+id/tvLeyendasLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Leyendas"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/ivMapaCampus"
+        tools:layout_editor_absoluteX="16dp">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvLeyendasLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAmericanEnglishLounge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📌 American English Lounge"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvBibliotecaLincoln"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="📖​ Biblioteca Lincoln"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAuditorio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎓 Auditorio Patrick N. Hughson"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.1" />
+
+            <TextView
+                android:id="@+id/tvMakerSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="⌨️ Maker Space"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPlazaEstudiantil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏘️ Plaza Estudiantil"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:id="@+id/tvRecordingStudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="🔊 Recording Studio"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvEdificioA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏛️ Edificio A"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:id="@+id/tvEdificioE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:text="🏢 Edificio E"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvParqueoEdificioA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🚙 Parqueo Edificio A"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:id="@+id/tvParqueoEdificioE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="🚗 Parqueo Edificio E"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCafeteriaEdificioA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🍕 Cafetería Edificio A"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+            <View
+                android:layout_width="45dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:id="@+id/tvCafeteriaEdificioE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="🍔 Cafetería Edificio E"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvIndicacionesImagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click en las leyendas para ver imagen"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="italic">
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
