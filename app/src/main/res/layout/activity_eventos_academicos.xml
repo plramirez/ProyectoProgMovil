@@ -21,8 +21,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="40dp"
-            android:src="@drawable/dominico_americano_campus3">
-
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/campuss_dominico">
         </ImageView>
 
         <TextView
@@ -45,7 +45,6 @@
             android:shadowDy="2"
             android:shadowRadius="1.5"
             android:textColor="@color/blue">
-
         </TextView>
 
         <TextView

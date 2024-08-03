@@ -1,212 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDFFE6E7"
     tools:context=".DetallesDeEvento">
 
-    <TextView
-        android:id="@+id/tvDETituloEvento"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivImagenEvento"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Concierto de Rock"
-        android:textSize="24dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:letterSpacing="0.1"
-        android:shadowColor="#000000"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="1.5"
-        android:textColor="@color/blue">
-    </TextView>
-
-    <ImageView
-        android:id="@+id/ivImagenEvento"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDETituloEvento"
-        android:src="@drawable/ie_concierto_rock">
-
-    </ImageView>
-
-    <LinearLayout
-        android:id="@+id/linealLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImagenEvento"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:layout_marginHorizontal="14dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="#DDFFE6E7"
+        tools:context=".DetallesDeEvento">
 
         <TextView
+            android:id="@+id/tvDETituloEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/ivImagenEvento"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Concierto de Rock"
+            android:textSize="24dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:letterSpacing="0.1"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1.5"
+            android:textColor="@color/blue">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/ivImagenEvento"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDETituloEvento"
+            android:src="@drawable/ie_concierto_rock">
+
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/linealLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivImagenEvento"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="14dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Evento: "
+                android:textColor="@color/black"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cultural"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDescripcionEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tipo de Evento: "
-            android:textColor="@color/black"
-            android:textStyle="bold">
+            android:paddingHorizontal="14dp"
+            android:singleLine="false"
+            android:text="Celebremos juntos la independencia de los Estados Unidos con un increíble concierto rock! Este 3 de julio a las 6:00pm, no te puedes perder la energía de @neokarmarockband en la sede principal del Instituto Cultural Dominico Americano.
+
+    Disfruta de música en vivo, deliciosas propuestas gastronómicas y entrada libre para todo. ¡Te esperamos en Av. Abraham Lincoln #21 para una noche inolvidable!
+
+    🎤 Banda: Neokarma Rock Band
+
+    Además, tendremos un DJ en vivo, propuesta gastronómica estadounidense y un Hot Dog Eating Contest! 🌭🎶
+
+    🎸 ¡Vive la energía, la pasión y la magia del rock en cada acorde! 🎸 #4deJulio #RockAndRoll #ConciertoInolvidable #Celebración #DomínicoAmericano 🇺🇸🎸
+    "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linealLayout1">
 
         </TextView>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linealLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cultural"
-            android:textColor="@color/black"
-            android:textStyle="bold">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescripcionEvento"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="14dp"
+            android:orientation="horizontal">
 
-        </TextView>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📅 Fecha: "
+                android:textColor="@color/black"
+                android:textStyle="bold">
 
-    <TextView
-        android:id="@+id/tvDescripcionEvento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linealLayout1"
-        android:paddingHorizontal="14dp"
-        android:singleLine="false"
-        android:text="Celebremos juntos la independencia de los Estados Unidos con un increíble concierto rock! Este 3 de julio a las 6:00pm, no te puedes perder la energía de @neokarmarockband en la sede principal del Instituto Cultural Dominico Americano.
+            </TextView>
 
-Disfruta de música en vivo, deliciosas propuestas gastronómicas y entrada libre para todo. ¡Te esperamos en Av. Abraham Lincoln #21 para una noche inolvidable!
-📅 Fecha: 3 de julio 2024
-⏰ Hora: 6:00 p.m.
-📍 Lugar: Plaza del Estudiante
-🎤 Banda: Neokarma Rock Band
+            <TextView
+                android:id="@+id/tvDEFechaEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 de Julio"
+                android:textColor="@color/black"
+                android:textStyle="bold">
 
-Además, tendremos un DJ en vivo, propuesta gastronómica estadounidense y un Hot Dog Eating Contest! 🌭🎶
+            </TextView>
+        </LinearLayout>
 
-🎸 ¡Vive la energía, la pasión y la magia del rock en cada acorde! 🎸 #4deJulio #RockAndRoll #ConciertoInolvidable #Celebración #DomínicoAmericano 🇺🇸🎸
-">
-
-    </TextView>
-
-    <LinearLayout
-        android:id="@+id/linealLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescripcionEvento"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="14dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linealLayout3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📅 Fecha: "
-            android:textColor="@color/black"
-            android:textStyle="bold">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linealLayout2"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="14dp"
+            android:orientation="horizontal">
 
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏰ Hora: "
+                android:textColor="@color/black"
+                android:textStyle="bold">
 
-        <TextView
-            android:id="@+id/tvDEFechaEvento"
-            android:layout_width="wrap_content"
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvDEHoraEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6:00 PM"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linealLayout4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="3 de Julio"
-            android:textColor="@color/black"
-            android:textStyle="bold">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linealLayout3"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="14dp"
+            android:orientation="horizontal">
 
-        </TextView>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 Lugar: "
+                android:textColor="@color/black"
+                android:textStyle="bold">
 
-    <LinearLayout
-        android:id="@+id/linealLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linealLayout2"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="14dp"
-        android:orientation="horizontal">
+            </TextView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⏰ Hora: "
-            android:textColor="@color/black"
-            android:textStyle="bold">
+            <TextView
+                android:id="@+id/tvDELugarEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plaza del Estudiante"
+                android:textColor="@color/black"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
 
-        </TextView>
+        <Button
+            android:id="@+id/btnCampusMapa"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/red_2"
+            android:text="Ver Mapa"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linealLayout4"
+            android:layout_marginVertical="12dp"
+            android:layout_marginHorizontal="42dp">
+        </Button>
 
-        <TextView
-            android:id="@+id/tvDEHoraEvento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6:00 PM"
-            android:textColor="@color/black"
-            android:textStyle="bold">
+        <Button
+            android:id="@+id/btnRegistrarse"
+            android:layout_width="125dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/red_2"
+            android:text="Registrarse"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCampusMapa"
+            android:layout_marginVertical="12dp"
+            android:layout_marginHorizontal="42dp">
+        </Button>
 
-        </TextView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/linealLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linealLayout3"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="14dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="📍 Lugar: "
-            android:textColor="@color/black"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/tvDELugarEvento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Plaza del Estudiante"
-            android:textColor="@color/black"
-            android:textStyle="bold">
-        </TextView>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnCampusMap"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/red_2"
-        android:text="Ver Mapa"
-        android:textAllCaps="true"
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linealLayout4"
-        android:layout_marginVertical="12dp"
-        android:layout_marginHorizontal="42dp">
-
-    </Button>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

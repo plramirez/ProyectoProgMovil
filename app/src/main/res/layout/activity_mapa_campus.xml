@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -85,11 +85,12 @@
                 android:layout_height="wrap_content"
                 android:text="🏘️ Plaza Estudiantil"
                 android:textColor="@color/black"
+                android:padding="5dp"
                 android:textStyle="bold">
             </TextView>
 
             <View
-                android:layout_width="45dp"
+                android:layout_width="25dp"
                 android:layout_height="0dp"
                 android:layout_weight="0.5" />
 
@@ -98,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.30"
+                android:padding="5dp"
                 android:text="🔊 Recording Studio"
                 android:textColor="@color/black"
                 android:textStyle="bold">
@@ -109,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -117,12 +119,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="🏛️ Edificio A"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
 
             <View
-                android:layout_width="45dp"
+                android:layout_width="25dp"
                 android:layout_height="0dp"
                 android:layout_weight="0.5" />
 
@@ -132,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.45"
                 android:text="🏢 Edificio E"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
@@ -143,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -151,12 +155,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="🚙 Parqueo Edificio A"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
 
             <View
-                android:layout_width="45dp"
+                android:layout_width="25dp"
                 android:layout_height="0dp"
                 android:layout_weight="0.5" />
 
@@ -166,6 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
                 android:text="🏎️​ Parqueo Edificio E"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
@@ -176,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -184,21 +190,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="🍕 Cafetería Edificio A"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
 
             <View
-                android:layout_width="45dp"
+                android:layout_width="25dp"
                 android:layout_height="0dp"
-                android:layout_weight="0.5" />
+                android:layout_weight="0.1" />
 
             <TextView
                 android:id="@+id/tvCafeteriaEdificioE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.35"
+                android:layout_weight="0.5"
+                android:singleLine="true"
                 android:text="🍔 Cafetería Edificio E"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
@@ -210,7 +219,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -218,12 +227,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="📖​ Biblioteca Lincoln"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
 
             <View
-                android:layout_width="45dp"
+                android:layout_width="20dp"
                 android:layout_height="0dp"
                 android:layout_weight="2" />
 
@@ -233,6 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:text="⌨️ Maker Space"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
@@ -244,7 +255,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -258,7 +269,7 @@
             </TextView>
 
             <View
-                android:layout_width="55dp"
+                android:layout_width="40dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
@@ -267,11 +278,13 @@
                 android:id="@+id/tvAmericanEnglishLounge"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:ellipsize="start"
                 android:text="📌 American English Lounge"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold">
+
+            </TextView>
 
 
         </LinearLayout>
