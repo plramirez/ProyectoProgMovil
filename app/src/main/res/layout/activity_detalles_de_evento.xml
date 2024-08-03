@@ -64,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tipo de Evento: "
+                android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
 
@@ -73,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cultural"
+                android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textStyle="bold">
 
@@ -84,17 +86,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="14dp"
-            android:singleLine="false"
-            android:text="Celebremos juntos la independencia de los Estados Unidos con un increíble concierto rock! Este 3 de julio a las 6:00pm, no te puedes perder la energía de @neokarmarockband en la sede principal del Instituto Cultural Dominico Americano.
-
-    Disfruta de música en vivo, deliciosas propuestas gastronómicas y entrada libre para todo. ¡Te esperamos en Av. Abraham Lincoln #21 para una noche inolvidable!
-
-    🎤 Banda: Neokarma Rock Band
-
-    Además, tendremos un DJ en vivo, propuesta gastronómica estadounidense y un Hot Dog Eating Contest! 🌭🎶
-
-    🎸 ¡Vive la energía, la pasión y la magia del rock en cada acorde! 🎸 #4deJulio #RockAndRoll #ConciertoInolvidable #Celebración #DomínicoAmericano 🇺🇸🎸
-    "
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="Celebremos juntos la independencia de los Estados Unidos con un increíble concierto rock! Este 3 de julio a las 6:00pm, no te puedes perder la energía de @neokarmarockband en la sede principal del Instituto Cultural Dominico Americano.\n\n
+Disfruta de música en vivo, deliciosas propuestas gastronómicas y entrada libre para todo. ¡Te esperamos en Av. Abraham Lincoln #21 para una noche inolvidable!
+\n\n
+🎤 Banda: Neokarma Rock Band
+\n\n
+Además, tendremos un DJ en vivo, propuesta gastronómica estadounidense y un Hot Dog Eating Contest! 🌭🎶
+\n\n
+🎸 ¡Vive la energía, la pasión y la magia del rock en cada acorde! 🎸 #4deJulio #RockAndRoll #ConciertoInolvidable #Celebración #DomínicoAmericano 🇺🇸🎸"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +121,6 @@
                 android:text="📅 Fecha: "
                 android:textColor="@color/black"
                 android:textStyle="bold">
-
             </TextView>
 
             <TextView
@@ -129,7 +130,6 @@
                 android:text="3 de Julio"
                 android:textColor="@color/black"
                 android:textStyle="bold">
-
             </TextView>
         </LinearLayout>
 
@@ -150,7 +150,6 @@
                 android:text="⏰ Hora: "
                 android:textColor="@color/black"
                 android:textStyle="bold">
-
             </TextView>
 
             <TextView
@@ -160,7 +159,6 @@
                 android:text="6:00 PM"
                 android:textColor="@color/black"
                 android:textStyle="bold">
-
             </TextView>
         </LinearLayout>
 
@@ -181,7 +179,6 @@
                 android:text="📍 Lugar: "
                 android:textColor="@color/black"
                 android:textStyle="bold">
-
             </TextView>
 
             <TextView
