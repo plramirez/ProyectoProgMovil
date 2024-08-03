@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProyectoProgMovil"
         tools:targetApi="31">
         <activity
+            android:name=".DetallesDeEventoAcademicoActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistrarseActivity"
             android:exported="false" />
         <activity

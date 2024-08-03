@@ -14,6 +14,7 @@ import com.example.proyectoprogmovil.adapters.CategoriasAdapter
 import com.example.proyectoprogmovil.adapters.EventosAcademicosAdapter
 import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.datasealclasses.EventoCategoria
+import com.example.proyectoprogmovil.datasealclasses.EventoCultural
 
 class EventosAcademicosActivity : AppCompatActivity() {
 
@@ -25,6 +26,9 @@ class EventosAcademicosActivity : AppCompatActivity() {
 
     private val eventosAcademicos = mutableListOf(
         EventoAcademico(
+            4,
+            "",
+            "",
             "Concierto de Rock",
             "Conmemoramos la Independencia de los Estados Unidos con un épico concierto de rock en nuestra sede principal de la Av. Abraham Lincoln.",
             "Plaza del Estudiante",
@@ -33,6 +37,9 @@ class EventosAcademicosActivity : AppCompatActivity() {
             EventoCategoria.Talleres
         ),
         EventoAcademico(
+            5,
+            "",
+            "",
             "Celebrar la Dominicanidad",
             "¡Celebra la dominicanidad con nosotros! La Dirección Cultural del Instituto Cultural Domínico Americano te invita a formar parte de esta actividad en el Mes de la Independencia de la República Dominicana, con el apoyo de la Dirección General de Bellas Artes.",
             "Auditorio Patrick N. Hughson",
@@ -41,6 +48,9 @@ class EventosAcademicosActivity : AppCompatActivity() {
             EventoCategoria.Conferencias
         ),
         EventoAcademico(
+            6,
+            "",
+            "",
             "Navidad y Teatro",
             "El Instituto Cultural Domínico Americano, desde su Dirección Cultural, les invita a una celebración especial de cierre de año.",
             "Auditorio Patrick N. Hughson",
@@ -56,6 +66,7 @@ class EventosAcademicosActivity : AppCompatActivity() {
     private lateinit var rvEventosAcademicos: RecyclerView
     private lateinit var eventosAcademicosAdapter: EventosAcademicosAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eventos_academicos)
@@ -63,7 +74,6 @@ class EventosAcademicosActivity : AppCompatActivity() {
         initComponents()
         initUI()
     }
-
 
     private fun initComponents() {
         rvCategorias = findViewById(R.id.rvCategorias)
@@ -93,5 +103,9 @@ class EventosAcademicosActivity : AppCompatActivity() {
             eventosAcademicos.filter { selectedCategories.contains(it.categoria) }
         eventosAcademicosAdapter.eventosAcademicos = nuevoEventoAcademico
         eventosAcademicosAdapter.notifyDataSetChanged()
+    }
+
+    fun getEventoAcademicoById(eventId: Int): EventoAcademico? {
+        return eventosAcademicos.find { it.eventId == eventId }
     }
 }

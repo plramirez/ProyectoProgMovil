@@ -2,11 +2,13 @@ package com.example.proyectoprogmovil.viewholders
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.DetallesDeEvento
+import com.example.proyectoprogmovil.DetallesDeEventoAcademicoActivity
 import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.R
 
@@ -27,9 +29,10 @@ class EventosAcademicosViewHolder (view: View): RecyclerView.ViewHolder(view) {
         tvHoraEventoCultural.text = eventoAcademico.eventTime
         tvLugarEventoCultural.text = eventoAcademico.eventPlace
 
-
         ivEnterArrow.setOnClickListener {
-            val intent = Intent(context, DetallesDeEvento::class.java)
+            val intent = Intent(context, DetallesDeEventoAcademicoActivity::class.java)
+            intent.putExtra("EVENT_ID", eventoAcademico.eventId)
+            Log.i("EventosAcademicosViewHolder", "Click en arrow")
 
             context.startActivity(intent)
         }

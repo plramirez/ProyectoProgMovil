@@ -2,6 +2,7 @@ package com.example.proyectoprogmovil.viewholders
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,6 +30,7 @@ class EventosCulturalesViewHolder (view: View): RecyclerView.ViewHolder(view) {
 
         ivEnterArrow.setOnClickListener {
             val intent = Intent(context, DetallesDeEvento::class.java)
+            intent.putExtra("EVENT_ID", eventoCultural.eventId)
 
             context.startActivity(intent)
         }

@@ -7,9 +7,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
 
-class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
+class DetallesDeEventoAcademicoActivity<EventoAcademico> : AppCompatActivity() {
 
     private lateinit var btnMapaCampus: Button
     private lateinit var btnRegistrarse: Button
@@ -22,23 +21,20 @@ class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detalles_de_evento)
+        setContentView(R.layout.activity_detalles_de_evento_academico)
 
         val eventId = intent.getIntExtra("EVENT_ID", -1)
 
         initComponents()
         initListeners()
 
-        val eventosCulturalesActivity = EventosCulturalesActivity()
-        val eventoCultural = eventosCulturalesActivity.getEventoCulturalById(eventId)
-        displayEventDetails(eventoCultural)
 
-//        val eventosAcademicosActivity = EventosAcademicosActivity()
-//        val eventoAcademico = eventosAcademicosActivity.getEventoAcademicoById(eventId)
-//        displayAcademicEventDetails(eventoAcademico)
+        val eventosAcademicosActivity = EventosAcademicosActivity()
+        val eventoAcademico = eventosAcademicosActivity.getEventoAcademicoById(eventId)
+        displayAcademicEventDetails(eventoAcademico)
     }
 
-    private fun displayAcademicEventDetails(eventoAcademico: EventoAcademico?) {
+    private fun displayAcademicEventDetails(eventoAcademico: com.example.proyectoprogmovil.datasealclasses.EventoAcademico?) {
         tvDETituloEvento.text = eventoAcademico?.eventName
         tvDEDescripcionExtensaEvento.text = eventoAcademico?.eventDescriptionExtense
         tvDEFechaEvento.text = eventoAcademico?.eventDate
@@ -48,17 +44,6 @@ class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
         val imageResId = resources.getIdentifier(eventoAcademico?.eventImageSource, "drawable", packageName)
         ivImagenEvento.setImageResource(imageResId)
 
-    }
-
-    private fun displayEventDetails(eventoCultural: com.example.proyectoprogmovil.datasealclasses.EventoCultural?) {
-        tvDETituloEvento.text = eventoCultural?.eventName
-        tvDEDescripcionExtensaEvento.text = eventoCultural?.eventDescriptionExtense
-        tvDEFechaEvento.text = eventoCultural?.eventDate
-        tvDEHoraEvento.text = eventoCultural?.eventTime
-        tvDELugarEvento.text = eventoCultural?.eventPlace
-
-        val imageResId = resources.getIdentifier(eventoCultural?.eventImageSource, "drawable", packageName)
-        ivImagenEvento.setImageResource(imageResId)
     }
 
 
