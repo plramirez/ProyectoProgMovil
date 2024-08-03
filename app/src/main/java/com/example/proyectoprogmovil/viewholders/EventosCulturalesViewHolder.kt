@@ -1,8 +1,12 @@
 package com.example.proyectoprogmovil.viewholders
 
+import android.content.Context
+import android.content.Intent
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectoprogmovil.DetallesDeEvento
 import com.example.proyectoprogmovil.datasealclasses.EventoCultural
 import com.example.proyectoprogmovil.R
 
@@ -13,13 +17,22 @@ class EventosCulturalesViewHolder (view: View): RecyclerView.ViewHolder(view) {
     private val tvFechaEventoCultural: TextView = view.findViewById(R.id.tvEventoCulturalFecha)
     private val tvHoraEventoCultural: TextView = view.findViewById(R.id.tvEventoCulturalHora)
     private val tvLugarEventoCultural: TextView = view.findViewById(R.id.tvEventoCulturalLugar)
+    private val ivEnterArrow: ImageView = view.findViewById(R.id.ivEnterArrow)
 
 
-    fun render(eventoCultural: EventoCultural){
+    fun render(eventoCultural: EventoCultural, context: Context){
         tvNombreEventoCultural.text = eventoCultural.eventName
         tvDescripcionEventoCultural.text = eventoCultural.eventDescription
         tvFechaEventoCultural.text = eventoCultural.eventDate
         tvHoraEventoCultural.text = eventoCultural.eventTime
         tvLugarEventoCultural.text = eventoCultural.eventPlace
+
+        ivEnterArrow.setOnClickListener {
+            val intent = Intent(context, DetallesDeEvento::class.java)
+
+            context.startActivity(intent)
+        }
+
     }
+
 }

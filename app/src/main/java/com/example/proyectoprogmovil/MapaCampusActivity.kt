@@ -46,9 +46,7 @@ class MapaCampusActivity : AppCompatActivity() {
 
         initComponents()
         initListeners()
-
     }
-
 
     private fun initListeners() {
         tvAmericanEnglishLounge.setOnClickListener {
@@ -58,7 +56,6 @@ class MapaCampusActivity : AppCompatActivity() {
         flAmericanEnglishLounge.setOnClickListener {
             flAmericanEnglishLounge.visibility = View.GONE
         }
-
 
         tvAuditorioPatric.setOnClickListener {
             flAuditorioPatrick.visibility = View.VISIBLE
@@ -76,7 +73,6 @@ class MapaCampusActivity : AppCompatActivity() {
             flBibliotecaLincoln.visibility = View.GONE
         }
 
-
         tvCafeteriaEdificioA.setOnClickListener {
             flCafeteriaEdificioA.visibility = View.VISIBLE
         }
@@ -88,7 +84,6 @@ class MapaCampusActivity : AppCompatActivity() {
         flCafeteriaEdificioA.setOnClickListener {
             flCafeteriaEdificioA.visibility = View.GONE
         }
-
 
         tvEdificioA.setOnClickListener {
             flEdificioA.visibility = View.VISIBLE

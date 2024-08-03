@@ -12,7 +12,6 @@ import com.example.proyectoprogmovil.datasealclasses.EventoCultural
 
 class EventosCulturalesActivity : AppCompatActivity() {
 
-
     private val eventosCulturales = mutableListOf(
         EventoCultural("Concierto de Rock", "Conmemoramos la Independencia de los Estados Unidos con un épico concierto de rock en nuestra sede principal de la Av. Abraham Lincoln.", "Plaza del Estudiante", "03/07/2024 ", "6:00PM"),
         EventoCultural("Celebrar la Dominicanidad", "¡Celebra la dominicanidad con nosotros! La Dirección Cultural del Instituto Cultural Domínico Americano te invita a formar parte de esta actividad en el Mes de la Independencia de la República Dominicana, con el apoyo de la Dirección General de Bellas Artes.", "Auditorio Patrick N. Hughson", "24/07/2024 ", "8:00AM"),
@@ -24,17 +23,11 @@ class EventosCulturalesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContentView(R.layout.activity_eventos_culturales)
 
         initComponents()
         initUI()
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
     private fun initComponents() {
@@ -42,10 +35,9 @@ class EventosCulturalesActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        eventosCulturalesAdapter = EventosCulturalesAdapter(eventosCulturales)
+        eventosCulturalesAdapter = EventosCulturalesAdapter(this, eventosCulturales)
         rvEventosCulturales.layoutManager = LinearLayoutManager(this)
         rvEventosCulturales.adapter = eventosCulturalesAdapter
 
     }
-
 }

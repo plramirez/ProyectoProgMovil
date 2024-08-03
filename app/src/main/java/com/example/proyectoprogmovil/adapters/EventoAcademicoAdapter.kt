@@ -1,5 +1,6 @@
 package com.example.proyectoprogmovil.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +8,7 @@ import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.viewholders.EventosAcademicosViewHolder
 import com.example.proyectoprogmovil.R
 
-class EventosAcademicosAdapter(var eventosAcademicos: List<EventoAcademico>): RecyclerView.Adapter<EventosAcademicosViewHolder>() {
+class EventosAcademicosAdapter(private val context: Context, var eventosAcademicos: List<EventoAcademico>): RecyclerView.Adapter<EventosAcademicosViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventosAcademicosViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event_preview, parent, false)
         return EventosAcademicosViewHolder(view)
@@ -16,6 +17,6 @@ class EventosAcademicosAdapter(var eventosAcademicos: List<EventoAcademico>): Re
     override fun getItemCount() = eventosAcademicos.size
 
     override fun onBindViewHolder(holder: EventosAcademicosViewHolder, position: Int) {
-        holder.render(eventosAcademicos[position])
+        holder.render(eventosAcademicos[position], context)
     }
 }

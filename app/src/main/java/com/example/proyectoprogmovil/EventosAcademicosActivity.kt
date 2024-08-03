@@ -1,6 +1,9 @@
 package com.example.proyectoprogmovil
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -53,22 +56,14 @@ class EventosAcademicosActivity : AppCompatActivity() {
     private lateinit var rvEventosAcademicos: RecyclerView
     private lateinit var eventosAcademicosAdapter: EventosAcademicosAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_eventos_academicos)
 
         initComponents()
         initUI()
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
+
 
     private fun initComponents() {
         rvCategorias = findViewById(R.id.rvCategorias)
@@ -81,7 +76,7 @@ class EventosAcademicosActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvCategorias.adapter = categoriasAdapter
 
-        eventosAcademicosAdapter = EventosAcademicosAdapter(eventosAcademicos)
+        eventosAcademicosAdapter = EventosAcademicosAdapter(this, eventosAcademicos)
         rvEventosAcademicos.layoutManager = LinearLayoutManager(this)
         rvEventosAcademicos.adapter = eventosAcademicosAdapter
     }

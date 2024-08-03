@@ -228,14 +228,14 @@
                 android:layout_weight="2" />
 
             <TextView
-                android:id="@+id/tvAmericanEnglishLounge"
+                android:id="@+id/tvMakerSpace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📌 American English Lounge"
+                android:layout_weight="4"
+                android:text="⌨️ Maker Space"
                 android:textColor="@color/black"
                 android:textStyle="bold">
             </TextView>
-
 
         </LinearLayout>
 
@@ -258,19 +258,22 @@
             </TextView>
 
             <View
-                android:layout_width="45dp"
+                android:layout_width="55dp"
                 android:layout_height="0dp"
-                android:layout_weight="0.1" />
+                android:layout_weight="1" />
+
 
             <TextView
-                android:id="@+id/tvMakerSpace"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvAmericanEnglishLounge"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
-                android:text="⌨️ Maker Space"
+                android:layout_marginStart="10dp"
+                android:ellipsize="start"
+                android:text="📌 American English Lounge"
                 android:textColor="@color/black"
-                android:textStyle="bold">
-            </TextView>
+                android:textStyle="bold"></TextView>
+
+
         </LinearLayout>
 
 <!--Indicaciones-->
@@ -455,7 +458,5 @@
             android:src="@drawable/iv_recording_studio">
         </ImageView>
     </FrameLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
