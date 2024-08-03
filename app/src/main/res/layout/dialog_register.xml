@@ -55,7 +55,7 @@
             android:layout_height="50dp"
             android:textSize="14sp"
             android:textStyle="italic"
-            android:hint="Ingrese su nombre...">
+            android:hint="Ingrese su(s) nombre(s)...">
         </EditText>
     </LinearLayout>
 
@@ -80,7 +80,7 @@
             android:layout_height="50dp"
             android:textSize="14sp"
             android:textStyle="italic"
-            android:hint="Ingrese su apellido...">
+            android:hint="Ingrese su(s) apellido(s)...">
         </EditText>
     </LinearLayout>
 
