@@ -10,4 +10,4 @@ data class EventoAcademico(
     val eventDate: String,
     val eventTime: String,
     val categoria: EventoCategoria,
-    var isSelected: Boolean = false)
+    var isSelected: Boolean = true)
