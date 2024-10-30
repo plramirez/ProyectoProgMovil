@@ -1,8 +1,7 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.domain
 
 import android.content.Context
 import android.graphics.Matrix
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.ScaleGestureDetector
 import android.view.ViewTreeObserver
