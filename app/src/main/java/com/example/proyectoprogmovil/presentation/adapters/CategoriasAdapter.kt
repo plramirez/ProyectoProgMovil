@@ -1,10 +1,10 @@
-package com.example.proyectoprogmovil.adapters
+package com.example.proyectoprogmovil.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyectoprogmovil.viewholders.CategoriasViewHolder
-import com.example.proyectoprogmovil.datasealclasses.EventoCategoria
+import com.example.proyectoprogmovil.presentation.viewholders.CategoriasViewHolder
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoCategoria
 import com.example.proyectoprogmovil.R
 
 class CategoriasAdapter(

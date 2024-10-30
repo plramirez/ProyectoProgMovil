@@ -1,6 +1,6 @@
-package com.example.proyectoprogmovil.datasealclasses
+package com.example.proyectoprogmovil.domain.datasealclasses
 
-data class EventoCultural(
+data class EventoAcademico(
     val eventId: Int,
     val eventDescriptionExtense: String,
     val eventImageSource: String,
@@ -8,4 +8,6 @@ data class EventoCultural(
     val eventDescription: String,
     val eventPlace: String,
     val eventDate: String,
-    val eventTime: String)
+    val eventTime: String,
+    val categoria: EventoCategoria,
+    var isSelected: Boolean = true)

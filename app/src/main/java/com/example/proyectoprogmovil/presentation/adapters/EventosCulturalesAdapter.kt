@@ -1,11 +1,11 @@
-package com.example.proyectoprogmovil.adapters
+package com.example.proyectoprogmovil.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyectoprogmovil.datasealclasses.EventoCultural
-import com.example.proyectoprogmovil.viewholders.EventosCulturalesViewHolder
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
+import com.example.proyectoprogmovil.presentation.viewholders.EventosCulturalesViewHolder
 import com.example.proyectoprogmovil.R
 
 class EventosCulturalesAdapter(private val context: Context, var eventosCulturales: List<EventoCultural>): RecyclerView.Adapter<EventosCulturalesViewHolder>() {

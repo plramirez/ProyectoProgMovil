@@ -1,11 +1,11 @@
-package com.example.proyectoprogmovil.adapters
+package com.example.proyectoprogmovil.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
-import com.example.proyectoprogmovil.viewholders.EventosAcademicosViewHolder
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
+import com.example.proyectoprogmovil.presentation.viewholders.EventosAcademicosViewHolder
 import com.example.proyectoprogmovil.R
 
 class EventosAcademicosAdapter(private val context: Context, var eventosAcademicos: List<EventoAcademico>): RecyclerView.Adapter<EventosAcademicosViewHolder>() {

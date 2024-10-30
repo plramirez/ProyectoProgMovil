@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 
 class DetallesDeEventoAcademicoActivity<EventoAcademico> : AppCompatActivity() {
 
@@ -35,7 +36,7 @@ class DetallesDeEventoAcademicoActivity<EventoAcademico> : AppCompatActivity() {
         displayAcademicEventDetails(eventoAcademico)
     }
 
-    private fun displayAcademicEventDetails(eventoAcademico: com.example.proyectoprogmovil.datasealclasses.EventoAcademico?) {
+    private fun displayAcademicEventDetails(eventoAcademico: com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico?) {
         tvDETituloEvento.text = eventoAcademico?.eventName
         tvDEDescripcionExtensaEvento.text = eventoAcademico?.eventDescriptionExtense
         tvDEFechaEvento.text = eventoAcademico?.eventDate

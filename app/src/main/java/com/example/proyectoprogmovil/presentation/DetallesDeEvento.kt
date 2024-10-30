@@ -8,7 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
-import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
 
 class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
 
@@ -51,7 +52,7 @@ class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
 
     }
 
-    private fun displayEventDetails(eventoCultural: com.example.proyectoprogmovil.datasealclasses.EventoCultural?) {
+    private fun displayEventDetails(eventoCultural: com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural?) {
         tvDETituloEvento.text = eventoCultural?.eventName
         tvDEDescripcionExtensaEvento.text = eventoCultural?.eventDescriptionExtense
         tvDEFechaEvento.text = eventoCultural?.eventDate

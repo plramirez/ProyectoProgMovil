@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.R
-import com.example.proyectoprogmovil.adapters.CategoriasAdapter
-import com.example.proyectoprogmovil.adapters.EventosAcademicosAdapter
-import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
-import com.example.proyectoprogmovil.datasealclasses.EventoCategoria
+import com.example.proyectoprogmovil.presentation.adapters.CategoriasAdapter
+import com.example.proyectoprogmovil.presentation.adapters.EventosAcademicosAdapter
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoCategoria
 
 class EventosAcademicosActivity : AppCompatActivity() {
 

@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.R
-import com.example.proyectoprogmovil.adapters.EventosCulturalesAdapter
-import com.example.proyectoprogmovil.datasealclasses.EventoCultural
+import com.example.proyectoprogmovil.presentation.adapters.EventosCulturalesAdapter
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
 
 class EventosCulturalesActivity : AppCompatActivity() {
 

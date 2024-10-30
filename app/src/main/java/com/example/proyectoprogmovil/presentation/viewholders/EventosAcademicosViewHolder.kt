@@ -1,4 +1,4 @@
-package com.example.proyectoprogmovil.viewholders
+package com.example.proyectoprogmovil.presentation.viewholders
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.presentation.DetallesDeEventoAcademicoActivity
-import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.R
 
 class EventosAcademicosViewHolder (view: View): RecyclerView.ViewHolder(view) {
