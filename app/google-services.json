@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1035808132604",
+    "project_id": "unicda-eventos",
+    "storage_bucket": "unicda-eventos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035808132604:android:a1a240994b38579f6b7679",
+        "android_client_info": {
+          "package_name": "com.example.proyectoprogmovil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaY7TMw55bGTs-JiyijYjSi-_rPabRq90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
