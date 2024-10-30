@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDFFE6E7"
-    tools:context=".MapaCampusActivity">
+    tools:context=".presentation.MapaCampusActivity">
 
 <!--    Titulo-->
     <TextView

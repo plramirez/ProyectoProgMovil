@@ -1,9 +1,10 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.adapters.CategoriasAdapter
 import com.example.proyectoprogmovil.adapters.EventosAcademicosAdapter
 import com.example.proyectoprogmovil.datasealclasses.EventoAcademico

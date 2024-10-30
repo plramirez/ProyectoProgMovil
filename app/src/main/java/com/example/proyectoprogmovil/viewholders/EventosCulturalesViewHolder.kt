@@ -2,12 +2,11 @@ package com.example.proyectoprogmovil.viewholders
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyectoprogmovil.DetallesDeEvento
+import com.example.proyectoprogmovil.presentation.DetallesDeEvento
 import com.example.proyectoprogmovil.datasealclasses.EventoCultural
 import com.example.proyectoprogmovil.R
 

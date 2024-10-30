@@ -1,4 +1,4 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.presentation
 
 import android.app.Dialog
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
 
 class DetallesDeEvento<EventoCultural> : AppCompatActivity() {

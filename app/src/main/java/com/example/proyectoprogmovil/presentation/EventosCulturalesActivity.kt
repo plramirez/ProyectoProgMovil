@@ -1,12 +1,10 @@
-package com.example.proyectoprogmovil
+package com.example.proyectoprogmovil.presentation
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.adapters.EventosCulturalesAdapter
 import com.example.proyectoprogmovil.datasealclasses.EventoCultural
 

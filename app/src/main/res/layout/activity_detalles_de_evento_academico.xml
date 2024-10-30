@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDFFE6E7"
-    tools:context=".DetallesDeEvento">
+    tools:context=".presentation.DetallesDeEvento">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#DDFFE6E7"
-        tools:context=".DetallesDeEvento">
+        tools:context=".presentation.DetallesDeEvento">
 
         <TextView
             android:id="@+id/tvDETituloEvento"

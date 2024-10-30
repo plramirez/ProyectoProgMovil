@@ -7,8 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyectoprogmovil.DetallesDeEvento
-import com.example.proyectoprogmovil.DetallesDeEventoAcademicoActivity
+import com.example.proyectoprogmovil.presentation.DetallesDeEventoAcademicoActivity
 import com.example.proyectoprogmovil.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.R
 
