@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.presentation.adapters.EventosCulturalesAdapter
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
+import com.google.firebase.firestore.FirebaseFirestore
 
 class EventosCulturalesActivity : AppCompatActivity() {
 

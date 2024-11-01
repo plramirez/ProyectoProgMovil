@@ -40,18 +40,6 @@ class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
 //        displayAcademicEventDetails(eventoAcademico)
     }
 
-    private fun displayAcademicEventDetails(eventoAcademico: EventoAcademico?) {
-        tvDETituloEvento.text = eventoAcademico?.eventName
-        tvDEDescripcionExtensaEvento.text = eventoAcademico?.eventDescriptionExtense
-        tvDEFechaEvento.text = eventoAcademico?.eventDate
-        tvDEHoraEvento.text = eventoAcademico?.eventTime
-        tvDELugarEvento.text = eventoAcademico?.eventPlace
-
-        val imageResId = resources.getIdentifier(eventoAcademico?.eventImageSource, "drawable", packageName)
-        ivImagenEvento.setImageResource(imageResId)
-
-    }
-
     private fun displayEventDetails(eventoCultural: com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural?) {
         tvDETituloEvento.text = eventoCultural?.eventName
         tvDEDescripcionExtensaEvento.text = eventoCultural?.eventDescriptionExtense
