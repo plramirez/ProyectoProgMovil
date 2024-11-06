@@ -10,7 +10,7 @@ import com.example.proyectoprogmovil.R
 
 class EventosAcademicosAdapter(private val context: Context, var eventosAcademicos: List<EventoAcademico>): RecyclerView.Adapter<EventosAcademicosViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventosAcademicosViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event_preview, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_evento_academico, parent, false)
         return EventosAcademicosViewHolder(view)
     }
 

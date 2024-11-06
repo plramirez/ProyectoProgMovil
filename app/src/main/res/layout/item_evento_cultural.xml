@@ -90,7 +90,7 @@
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:id="@+id/ivEnterArrow"
+                    android:id="@+id/ivCulturalEnterArrow"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:paddingBottom="5dp"

@@ -8,10 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
-import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
 
-class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
+class DetallesDeEvento : AppCompatActivity() {
 
     private lateinit var btnMapaCampus: Button
     private lateinit var btnRegistrarse: Button
@@ -26,21 +25,14 @@ class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_de_evento)
 
-        val eventId = intent.getIntExtra("EVENT_ID", -1)
+        val eventoCultural = intent.getParcelableExtra<EventoCultural>("EVENTO_CULTURAL")
 
         initComponents()
         initListeners()
-
-        val eventosCulturalesActivity = EventosCulturalesActivity()
-        val eventoCultural = eventosCulturalesActivity.getEventoCulturalById(eventId)
         displayEventDetails(eventoCultural)
-
-//        val eventosAcademicosActivity = EventosAcademicosActivity()
-//        val eventoAcademico = eventosAcademicosActivity.getEventoAcademicoById(eventId)
-//        displayAcademicEventDetails(eventoAcademico)
     }
 
-    private fun displayEventDetails(eventoCultural: com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural?) {
+    private fun displayEventDetails(eventoCultural: EventoCultural?) {
         tvDETituloEvento.text = eventoCultural?.eventName
         tvDEDescripcionExtensaEvento.text = eventoCultural?.eventDescriptionExtense
         tvDEFechaEvento.text = eventoCultural?.eventDate
@@ -51,11 +43,9 @@ class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
         ivImagenEvento.setImageResource(imageResId)
     }
 
-
     private fun initComponents() {
         btnMapaCampus = findViewById(R.id.btnCampusMapa)
         btnRegistrarse = findViewById(R.id.btnRegistrarse)
-
 
         tvDETituloEvento = findViewById(R.id.tvDETituloEvento)
         ivImagenEvento = findViewById(R.id.ivImagenEvento)
@@ -77,7 +67,6 @@ class DetallesDeEvento<EventoCultural> : AppCompatActivity() {
     private fun showForm() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_register)
-
         dialog.show()
     }
 }

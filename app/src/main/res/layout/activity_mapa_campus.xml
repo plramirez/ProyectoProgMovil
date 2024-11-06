@@ -32,7 +32,7 @@
 
     </TextView>
 
-    <com.example.proyectoprogmovil.ZoomImageView
+    <com.example.proyectoprogmovil.domain.ZoomImageView
         android:id="@+id/ivMapaCampus"
         android:layout_width="match_parent"
         android:layout_height="230dp"
@@ -43,7 +43,7 @@
         android:layout_marginTop="15dp"
         android:src="@drawable/mapa_campus_leyendas">
 
-    </com.example.proyectoprogmovil.ZoomImageView>
+    </com.example.proyectoprogmovil.domain.ZoomImageView>
 
     <TextView
         android:id="@+id/tvLeyendasLabel"

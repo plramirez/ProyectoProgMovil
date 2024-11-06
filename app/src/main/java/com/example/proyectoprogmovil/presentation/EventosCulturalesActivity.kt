@@ -1,5 +1,6 @@
 package com.example.proyectoprogmovil.presentation
 
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.presentation.adapters.EventosCulturalesAdapter
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.proyectoprogmovil.data.EventosCulturalesRepositoryImp
 
 class EventosCulturalesActivity : AppCompatActivity() {
 
     private lateinit var rvEventosCulturales: RecyclerView
     private lateinit var eventosCulturalesAdapter: EventosCulturalesAdapter
-    private val db = FirebaseFirestore.getInstance()
+    private val repository = EventosCulturalesRepositoryImp()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,19 +36,18 @@ class EventosCulturalesActivity : AppCompatActivity() {
     }
 
     private fun fetchEventosCulturales() {
-        db.collection("eventos-culturales")
-            .get()
-            .addOnSuccessListener { result ->
-                val eventos = result.map { document -> document.toObject(EventoCultural::class.java) }
+        repository.fetchEventosCulturales(
+            onSuccess = { eventos ->
                 eventosCulturalesAdapter.eventosCulturales = eventos
                 eventosCulturalesAdapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { exception ->
+            },
+            onFailure = { exception ->
                 // Handle the error
             }
+        )
     }
 
-    fun getEventoCulturalById(eventId: Int): EventoCultural? {
-        return eventosCulturalesAdapter.eventosCulturales.find { it.eventId == eventId }
-    }
+//    fun getEventoCulturalById(eventId: Int): EventoCultural? {
+//        return eventosCulturalesAdapter.eventosCulturales.find { it.eventId == eventId }
+//    }
 }

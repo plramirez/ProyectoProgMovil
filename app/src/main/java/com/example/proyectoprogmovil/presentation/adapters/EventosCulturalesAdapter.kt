@@ -1,13 +1,16 @@
 package com.example.proyectoprogmovil.presentation.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
-import com.example.proyectoprogmovil.presentation.viewholders.EventosCulturalesViewHolder
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.databinding.ItemEventoCulturalBinding
+import com.example.proyectoprogmovil.presentation.DetallesDeEvento
 
 class EventosCulturalesAdapter(
     private val context: Context,
@@ -29,6 +32,12 @@ class EventosCulturalesAdapter(
         fun bind(eventoCultural: EventoCultural, context: Context) {
             binding.eventoCultural = eventoCultural
             binding.executePendingBindings()
+
+            binding.ivCulturalEnterArrow.setOnClickListener {
+                val intent = Intent(context, DetallesDeEvento::class.java)
+                intent.putExtra("EVENTO_CULTURAL", eventoCultural)
+                context.startActivity(intent)
+            }
         }
     }
 }

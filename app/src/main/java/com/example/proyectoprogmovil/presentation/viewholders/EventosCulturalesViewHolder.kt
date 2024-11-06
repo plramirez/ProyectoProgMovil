@@ -17,7 +17,7 @@ class EventosCulturalesViewHolder (view: View): RecyclerView.ViewHolder(view) {
     private val tvFechaEventoCultural: TextView = view.findViewById(R.id.tvEventoCulturalFecha)
     private val tvHoraEventoCultural: TextView = view.findViewById(R.id.tvEventoCulturalHora)
     private val tvLugarEventoCultural: TextView = view.findViewById(R.id.tvEventoCulturalLugar)
-    private val ivEnterArrow: ImageView = view.findViewById(R.id.ivEnterArrow)
+    private val ivEnterArrow: ImageView = view.findViewById(R.id.ivCulturalEnterArrow)
 
 
     fun render(eventoCultural: EventoCultural, context: Context){
