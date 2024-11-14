@@ -1,5 +1,9 @@
 package com.example.proyectoprogmovil.domain.datasealclasses
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class EventoAcademico(
     val eventId: Int,
     val eventDescriptionExtense: String,
@@ -8,6 +12,8 @@ data class EventoAcademico(
     val eventDescription: String,
     val eventPlace: String,
     val eventDate: String,
-    val eventTime: String,
-    val categoria: EventoCategoria,
-    var isSelected: Boolean = true)
+    val eventTime: String
+): Parcelable {
+    // No-argument constructor for Firebase
+    constructor() : this(0, "", "", "", "", "", "", "")
+}

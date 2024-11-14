@@ -60,13 +60,6 @@
         </TextView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategorias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvEventosAcademicos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

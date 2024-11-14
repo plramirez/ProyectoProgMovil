@@ -9,8 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
 
-class DetallesDeEventoAcademicoActivity<EventoAcademico> : AppCompatActivity() {
+class DetallesDeEventoAcademicoActivity: AppCompatActivity() {
 
     private lateinit var btnMapaCampus: Button
     private lateinit var btnRegistrarse: Button
@@ -25,18 +26,19 @@ class DetallesDeEventoAcademicoActivity<EventoAcademico> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_de_evento_academico)
 
-        val eventId = intent.getIntExtra("EVENT_ID", -1)
+        val eventoAcademico = intent.getParcelableExtra<EventoAcademico>("EVENTO_ACADEMICO")
 
         initComponents()
         initListeners()
-
-
-        val eventosAcademicosActivity = EventosAcademicosActivity()
-        val eventoAcademico = eventosAcademicosActivity.getEventoAcademicoById(eventId)
         displayAcademicEventDetails(eventoAcademico)
+
+
+//        val eventosAcademicosActivity = EventosAcademicosActivity()
+//        val eventoAcademico = eventosAcademicosActivity.getEventoAcademicoById(eventId)
+
     }
 
-    private fun displayAcademicEventDetails(eventoAcademico: com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico?) {
+    private fun displayAcademicEventDetails(eventoAcademico: EventoAcademico?) {
         tvDETituloEvento.text = eventoAcademico?.eventName
         tvDEDescripcionExtensaEvento.text = eventoAcademico?.eventDescriptionExtense
         tvDEFechaEvento.text = eventoAcademico?.eventDate
@@ -74,7 +76,6 @@ class DetallesDeEventoAcademicoActivity<EventoAcademico> : AppCompatActivity() {
     private fun showForm() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_register)
-
         dialog.show()
     }
 }
