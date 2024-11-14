@@ -16,6 +16,18 @@
         android:theme="@style/Theme.ProyectoProgMovil"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".presentation.DetallesDeEventoAcademicoActivity"
             android:exported="false" />
         <activity
@@ -32,13 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".presentation.MenuPrincipal"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

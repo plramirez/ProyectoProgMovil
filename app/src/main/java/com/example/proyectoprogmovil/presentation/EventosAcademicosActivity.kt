@@ -45,5 +45,4 @@ class EventosAcademicosActivity : AppCompatActivity() {
             }
         )
     }
-
 }
