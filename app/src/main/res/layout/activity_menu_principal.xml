@@ -10,6 +10,20 @@
     android:gravity="center"
     tools:context=".presentation.MenuPrincipal">
 
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/red_1"
+        android:paddingBottom="16dp"
+        android:paddingStart="16dp"
+        android:gravity="top"
+        android:text="¡Bienvenido, @name!" />
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
