@@ -5,16 +5,17 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
+import com.example.proyectoprogmovil.presentation.viewholders.EventosCulturalesViewHolder
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.databinding.ItemEventoCulturalBinding
 import com.example.proyectoprogmovil.presentation.DetallesDeEvento
 
 class EventosCulturalesAdapter(
     private val context: Context,
-    var eventosCulturales: List<EventoCultural>
+    var eventosCulturales: List<EventoCultural>,
+    private val userRole: String?
 ) : RecyclerView.Adapter<EventosCulturalesAdapter.EventoCulturalViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoCulturalViewHolder {
@@ -23,13 +24,13 @@ class EventosCulturalesAdapter(
     }
 
     override fun onBindViewHolder(holder: EventoCulturalViewHolder, position: Int) {
-        holder.bind(eventosCulturales[position], context)
+        holder.bind(eventosCulturales[position], context, userRole)
     }
 
     override fun getItemCount(): Int = eventosCulturales.size
 
     class EventoCulturalViewHolder(private val binding: ItemEventoCulturalBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(eventoCultural: EventoCultural, context: Context) {
+        fun bind(eventoCultural: EventoCultural, context: Context, userRole: String?) {
             binding.eventoCultural = eventoCultural
             binding.executePendingBindings()
 
@@ -37,6 +38,22 @@ class EventosCulturalesAdapter(
                 val intent = Intent(context, DetallesDeEvento::class.java)
                 intent.putExtra("EVENTO_CULTURAL", eventoCultural)
                 context.startActivity(intent)
+            }
+
+            if (userRole == "admin") {
+                binding.editButton.visibility = View.VISIBLE
+                binding.deleteButton.visibility = View.VISIBLE
+
+                binding.editButton.setOnClickListener {
+                    // Code to edit the event
+                }
+
+                binding.deleteButton.setOnClickListener {
+                    // Code to delete the event
+                }
+            } else {
+                binding.editButton.visibility = View.GONE
+                binding.deleteButton.visibility = View.GONE
             }
         }
     }

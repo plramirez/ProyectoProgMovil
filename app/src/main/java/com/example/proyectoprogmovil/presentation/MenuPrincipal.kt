@@ -13,6 +13,9 @@ class MenuPrincipal : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var btnEventosAcademicos: Button
+    private lateinit var btnEventosCulturales: Button
+    private lateinit var btnMapaCampus: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +24,12 @@ class MenuPrincipal : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        val btnEventosAcademicos: Button = findViewById(R.id.btnAcademicEvents)
-        val btnEventosCulturales: Button = findViewById(R.id.btnCulturalEvents)
-        val btnMapaCampus: Button = findViewById(R.id.btnCampusMap)
+
         val welcomeTextView = findViewById<TextView>(R.id.welcomeTextView)
+
+        btnEventosAcademicos = findViewById(R.id.btnAcademicEvents)
+        btnEventosCulturales = findViewById(R.id.btnCulturalEvents)
+        btnMapaCampus = findViewById(R.id.btnCampusMap)
 
         btnEventosAcademicos.setOnClickListener { navigateToEventosAcademicos() }
         btnEventosCulturales.setOnClickListener { navigateToEventosCulturales() }
@@ -41,7 +46,17 @@ class MenuPrincipal : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         val name = document.getString("name")
+                        val role = document.getString("role")
                         welcomeTextView.text = "¡Bienvenido, $name!"
+
+                        // Pass role to activities
+                        val intent = Intent(this, EventosAcademicosActivity::class.java)
+                        intent.putExtra("userRole", role)
+                        btnEventosAcademicos.setOnClickListener { startActivity(intent) }
+
+                        val intentCultural = Intent(this, EventosCulturalesActivity::class.java)
+                        intentCultural.putExtra("userRole", role)
+                        btnEventosCulturales.setOnClickListener { startActivity(intentCultural) }
                     }
                 }
                 .addOnFailureListener { exception ->
