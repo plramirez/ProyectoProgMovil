@@ -10,7 +10,8 @@ import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.R
-import com.example.proyectoprogmovil.data.EventosAcademicosRepositoryImp
+import com.example.proyectoprogmovil.data.EventosAcademicosRepository
+import com.example.proyectoprogmovil.domain.*
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.presentation.adapters.EventosAcademicosAdapter
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,21 +20,32 @@ class EventosAcademicosActivity : AppCompatActivity() {
 
     private lateinit var rvEventosAcademicos: RecyclerView
     private lateinit var eventosAcademicosAdapter: EventosAcademicosAdapter
-    private val repository = EventosAcademicosRepositoryImp()
-
     private lateinit var addButton: Button
     private var userRole: String? = null
 
     private val eventosList = mutableListOf<EventoAcademico>()
+
+    private val repository = EventosAcademicosRepository(FirebaseFirestore.getInstance())
+    private val addEventUseCase = AddEventUseCase(repository)
+    private val updateEventUseCase = UpdateEventUseCase(repository)
+    private val deleteEventUseCase = DeleteEventUseCase(repository)
+    private val fetchEventsUseCase = FetchEventsUseCase(repository)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eventos_academicos)
 
         addButton = findViewById(R.id.addButton)
-
         userRole = intent.getStringExtra("userRole")
 
+        checkUserRole()
+
+        initComponents()
+        initUI()
+        fetchEventosAcademicos()
+    }
+
+    private fun checkUserRole() {
         if (userRole == "admin") {
             addButton.visibility = View.VISIBLE
             addButton.setOnClickListener {
@@ -42,10 +54,6 @@ class EventosAcademicosActivity : AppCompatActivity() {
         } else {
             addButton.visibility = View.GONE
         }
-
-        initComponents()
-        initUI()
-        fetchEventosAcademicos()
     }
 
     private fun initComponents() {
@@ -58,7 +66,6 @@ class EventosAcademicosActivity : AppCompatActivity() {
         rvEventosAcademicos.adapter = eventosAcademicosAdapter
     }
 
-    //Showing the dialog to add an event
     private fun showAddEventDialog() {
         val dialog = Dialog(this)
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_add_event, null)
@@ -95,7 +102,13 @@ class EventosAcademicosActivity : AppCompatActivity() {
                 eventTime = eventTime
             )
 
-            addEventToFirestore(event)
+            addEventUseCase.execute(event, { documentId ->
+                event.documentId = documentId
+                eventosList.add(event)
+                eventosAcademicosAdapter.notifyDataSetChanged()
+            }, { e ->
+                // Handle failure
+            })
             dialog.dismiss()
         }
 
@@ -132,59 +145,31 @@ class EventosAcademicosActivity : AppCompatActivity() {
                 eventTime = etEventTime.text.toString().trim()
             )
 
-            updateEventInFirestore(updatedEvent)
+            updateEventUseCase.execute(updatedEvent, {
+                val index = eventosList.indexOfFirst { it.documentId == updatedEvent.documentId }
+                if (index != -1) {
+                    eventosList[index] = updatedEvent
+                    eventosAcademicosAdapter.notifyItemChanged(index)
+                }
+            }, { e ->
+                // Handle failure
+            })
             dialog.dismiss()
         }
 
         dialog.show()
     }
 
-    private fun addEventToFirestore(event: EventoAcademico) {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("eventos-academicos")
-            .add(event)
-            .addOnSuccessListener { documentReference ->
-                event.documentId = documentReference.id
-                eventosList.add(event)
-                eventosAcademicosAdapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { e ->
-                // Handle failure
-            }
-    }
-
-    private fun updateEventInFirestore(event: EventoAcademico) {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("eventos-academicos")
-            .document(event.documentId)
-            .set(event)
-            .addOnSuccessListener {
-                val index = eventosList.indexOfFirst { it.documentId == event.documentId }
-                if (index != -1) {
-                    eventosList[index] = event
-                    eventosAcademicosAdapter.notifyItemChanged(index)
-                }
-            }
-            .addOnFailureListener { e ->
-                // Handle failure
-            }
-    }
-
     private fun deleteEventFromFirestore(event: EventoAcademico) {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("eventos-academicos")
-            .document(event.documentId)
-            .delete()
-            .addOnSuccessListener {
-                val index = eventosList.indexOfFirst { it.documentId == event.documentId }
-                if (index != -1) {
-                    eventosList.removeAt(index)
-                    eventosAcademicosAdapter.notifyItemRemoved(index)
-                }
+        deleteEventUseCase.execute(event.documentId, {
+            val index = eventosList.indexOfFirst { it.documentId == event.documentId }
+            if (index != -1) {
+                eventosList.removeAt(index)
+                eventosAcademicosAdapter.notifyItemRemoved(index)
             }
-            .addOnFailureListener { e ->
-                // Handle failure
-            }
+        }, { e ->
+            // Handle failure
+        })
     }
 
     private fun onDeleteButtonClick(event: EventoAcademico) {
@@ -192,22 +177,14 @@ class EventosAcademicosActivity : AppCompatActivity() {
     }
 
     private fun fetchEventosAcademicos() {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("eventos-academicos")
-            .get()
-            .addOnSuccessListener { result ->
-                eventosList.clear()
-                for (document in result) {
-                    val event = document.toObject(EventoAcademico::class.java)
-                    event.documentId = document.id
-                    eventosList.add(event)
-                }
-                eventosAcademicosAdapter.eventosAcademicos = eventosList
-                eventosAcademicosAdapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { e ->
-                // Handle failure
-            }
+        fetchEventsUseCase.execute({ events ->
+            eventosList.clear()
+            eventosList.addAll(events)
+            eventosAcademicosAdapter.eventosAcademicos = eventosList
+            eventosAcademicosAdapter.notifyDataSetChanged()
+        }, { e ->
+            // Handle failure
+        })
     }
 
     private fun onEditButtonClick(event: EventoAcademico) {

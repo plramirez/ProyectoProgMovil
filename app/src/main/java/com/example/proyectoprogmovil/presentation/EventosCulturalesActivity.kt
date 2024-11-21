@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.presentation.adapters.EventosCulturalesAdapter
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
-import com.example.proyectoprogmovil.data.EventosCulturalesRepositoryImp
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -20,7 +19,6 @@ class EventosCulturalesActivity : AppCompatActivity() {
 
     private lateinit var rvEventosCulturales: RecyclerView
     private lateinit var eventosCulturalesAdapter: EventosCulturalesAdapter
-    private val repository = EventosCulturalesRepositoryImp()
 
     private lateinit var addButton: Button
     private var userRole: String? = null
@@ -35,6 +33,14 @@ class EventosCulturalesActivity : AppCompatActivity() {
 
         userRole = intent.getStringExtra("userRole")
 
+        checkUserRole()
+
+        initComponents()
+        initUI()
+        fetchEventosCulturales()
+    }
+
+    private fun checkUserRole() {
         if (userRole == "admin") {
             addButton.visibility = View.VISIBLE
             addButton.setOnClickListener {
@@ -43,10 +49,6 @@ class EventosCulturalesActivity : AppCompatActivity() {
         } else {
             addButton.visibility = View.GONE
         }
-
-        initComponents()
-        initUI()
-        fetchEventosCulturales()
     }
 
     private fun initComponents() {
