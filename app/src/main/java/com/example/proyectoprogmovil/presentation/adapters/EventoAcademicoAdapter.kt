@@ -16,7 +16,8 @@ class EventosAcademicosAdapter(
     private val context: Context,
     var eventosAcademicos: List<EventoAcademico>,
     private val userRole: String?,
-    private val onEditButtonClick: (EventoAcademico) -> Unit
+    private val onEditButtonClick: (EventoAcademico) -> Unit,
+    private val onDeleteButtonClick: (EventoAcademico) -> Unit
 ) : RecyclerView.Adapter<EventosAcademicosAdapter.EventoAcademicoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoAcademicoViewHolder {
@@ -25,13 +26,13 @@ class EventosAcademicosAdapter(
     }
 
     override fun onBindViewHolder(holder: EventoAcademicoViewHolder, position: Int) {
-        holder.bind(eventosAcademicos[position], context, userRole, onEditButtonClick)
+        holder.bind(eventosAcademicos[position], context, userRole, onEditButtonClick, onDeleteButtonClick)
     }
 
     override fun getItemCount(): Int = eventosAcademicos.size
 
     class EventoAcademicoViewHolder(private val binding: ItemEventoAcademicoBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(eventoAcademico: EventoAcademico, context: Context, userRole: String?, onEditButtonClick: (EventoAcademico) -> Unit) {
+        fun bind(eventoAcademico: EventoAcademico, context: Context, userRole: String?, onEditButtonClick: (EventoAcademico) -> Unit, onDeleteButtonClick: (EventoAcademico) -> Unit) {
             binding.eventoAcademico = eventoAcademico
             binding.executePendingBindings()
 
@@ -50,7 +51,7 @@ class EventosAcademicosAdapter(
                 }
 
                 binding.deleteButton.setOnClickListener {
-                    // Code to delete the event
+                    onDeleteButtonClick(eventoAcademico)
                 }
             } else {
                 binding.editButton.visibility = View.GONE

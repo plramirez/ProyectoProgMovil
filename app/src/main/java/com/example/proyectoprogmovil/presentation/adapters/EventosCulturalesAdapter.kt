@@ -17,7 +17,8 @@ class EventosCulturalesAdapter(
     private val context: Context,
     var eventosCulturales: List<EventoCultural>,
     private val userRole: String?,
-    private val onEditButtonClick: (EventoCultural) -> Unit
+    private val onEditButtonClick: (EventoCultural) -> Unit,
+    private val onDeleteButtonClick: (EventoCultural) -> Unit
 ) : RecyclerView.Adapter<EventosCulturalesAdapter.EventoCulturalViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoCulturalViewHolder {
@@ -26,13 +27,13 @@ class EventosCulturalesAdapter(
     }
 
     override fun onBindViewHolder(holder: EventoCulturalViewHolder, position: Int) {
-        holder.bind(eventosCulturales[position], context, userRole, onEditButtonClick)
+        holder.bind(eventosCulturales[position], context, userRole, onEditButtonClick, onDeleteButtonClick)
     }
 
     override fun getItemCount(): Int = eventosCulturales.size
 
     class EventoCulturalViewHolder(private val binding: ItemEventoCulturalBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(eventoCultural: EventoCultural, context: Context, userRole: String?, onEditButtonClick: (EventoCultural) -> Unit) {
+        fun bind(eventoCultural: EventoCultural, context: Context, userRole: String?, onEditButtonClick: (EventoCultural) -> Unit, onDeleteButtonClick: (EventoCultural) -> Unit) {
             binding.eventoCultural = eventoCultural
             binding.executePendingBindings()
 
@@ -51,7 +52,7 @@ class EventosCulturalesAdapter(
                 }
 
                 binding.deleteButton.setOnClickListener {
-                    // Code to delete the event
+                    onDeleteButtonClick(eventoCultural)
                 }
             } else {
                 binding.editButton.visibility = View.GONE

@@ -54,7 +54,7 @@ class EventosCulturalesActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        eventosCulturalesAdapter = EventosCulturalesAdapter(this, listOf(), userRole, ::onEditButtonClick)
+        eventosCulturalesAdapter = EventosCulturalesAdapter(this, listOf(), userRole, ::onEditButtonClick, ::onDeleteButtonClick)
         rvEventosCulturales.layoutManager = LinearLayoutManager(this)
         rvEventosCulturales.adapter = eventosCulturalesAdapter
     }
@@ -170,6 +170,27 @@ class EventosCulturalesActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 // Handle failure
             }
+    }
+
+    private fun deleteEventFromFirestore(event: EventoCultural) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("eventos-culturales")
+            .document(event.documentId)
+            .delete()
+            .addOnSuccessListener {
+                val index = eventosList.indexOfFirst { it.documentId == event.documentId }
+                if (index != -1) {
+                    eventosList.removeAt(index)
+                    eventosCulturalesAdapter.notifyItemRemoved(index)
+                }
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+            }
+    }
+
+    private fun onDeleteButtonClick(event: EventoCultural) {
+        deleteEventFromFirestore(event)
     }
 
     private fun fetchEventosCulturales() {

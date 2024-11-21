@@ -53,7 +53,7 @@ class EventosAcademicosActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        eventosAcademicosAdapter = EventosAcademicosAdapter(this, listOf(), userRole, ::onEditButtonClick)
+        eventosAcademicosAdapter = EventosAcademicosAdapter(this, listOf(), userRole, ::onEditButtonClick, ::onDeleteButtonClick)
         rvEventosAcademicos.layoutManager = LinearLayoutManager(this)
         rvEventosAcademicos.adapter = eventosAcademicosAdapter
     }
@@ -168,6 +168,27 @@ class EventosAcademicosActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 // Handle failure
             }
+    }
+
+    private fun deleteEventFromFirestore(event: EventoAcademico) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("eventos-academicos")
+            .document(event.documentId)
+            .delete()
+            .addOnSuccessListener {
+                val index = eventosList.indexOfFirst { it.documentId == event.documentId }
+                if (index != -1) {
+                    eventosList.removeAt(index)
+                    eventosAcademicosAdapter.notifyItemRemoved(index)
+                }
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+            }
+    }
+
+    private fun onDeleteButtonClick(event: EventoAcademico) {
+        deleteEventFromFirestore(event)
     }
 
     private fun fetchEventosAcademicos() {
