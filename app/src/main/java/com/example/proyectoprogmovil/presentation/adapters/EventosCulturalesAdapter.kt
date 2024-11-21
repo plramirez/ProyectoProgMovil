@@ -10,12 +10,14 @@ import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
 import com.example.proyectoprogmovil.presentation.viewholders.EventosCulturalesViewHolder
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.databinding.ItemEventoCulturalBinding
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.presentation.DetallesDeEvento
 
 class EventosCulturalesAdapter(
     private val context: Context,
     var eventosCulturales: List<EventoCultural>,
-    private val userRole: String?
+    private val userRole: String?,
+    private val onEditButtonClick: (EventoCultural) -> Unit
 ) : RecyclerView.Adapter<EventosCulturalesAdapter.EventoCulturalViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoCulturalViewHolder {
@@ -24,13 +26,13 @@ class EventosCulturalesAdapter(
     }
 
     override fun onBindViewHolder(holder: EventoCulturalViewHolder, position: Int) {
-        holder.bind(eventosCulturales[position], context, userRole)
+        holder.bind(eventosCulturales[position], context, userRole, onEditButtonClick)
     }
 
     override fun getItemCount(): Int = eventosCulturales.size
 
     class EventoCulturalViewHolder(private val binding: ItemEventoCulturalBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(eventoCultural: EventoCultural, context: Context, userRole: String?) {
+        fun bind(eventoCultural: EventoCultural, context: Context, userRole: String?, onEditButtonClick: (EventoCultural) -> Unit) {
             binding.eventoCultural = eventoCultural
             binding.executePendingBindings()
 
@@ -45,7 +47,7 @@ class EventosCulturalesAdapter(
                 binding.deleteButton.visibility = View.VISIBLE
 
                 binding.editButton.setOnClickListener {
-                    // Code to edit the event
+                    onEditButtonClick(eventoCultural)
                 }
 
                 binding.deleteButton.setOnClickListener {

@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class EventoCultural(
+    var documentId: String = "",
     val eventName: String = "",
     val eventDescription: String = "",
     val eventDescriptionExtense: String = "",
@@ -14,5 +15,5 @@ data class EventoCultural(
     val eventImageSource: String = ""
 ) : Parcelable {
     // No-argument constructor for Firebase
-    constructor() : this("", "", "", "", "", "", "")
+    constructor() : this("","", "", "", "", "", "", "")
 }

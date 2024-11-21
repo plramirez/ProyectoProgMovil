@@ -15,7 +15,8 @@ import com.example.proyectoprogmovil.presentation.DetallesDeEventoAcademicoActiv
 class EventosAcademicosAdapter(
     private val context: Context,
     var eventosAcademicos: List<EventoAcademico>,
-    private val userRole: String?
+    private val userRole: String?,
+    private val onEditButtonClick: (EventoAcademico) -> Unit
 ) : RecyclerView.Adapter<EventosAcademicosAdapter.EventoAcademicoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoAcademicoViewHolder {
@@ -24,13 +25,13 @@ class EventosAcademicosAdapter(
     }
 
     override fun onBindViewHolder(holder: EventoAcademicoViewHolder, position: Int) {
-        holder.bind(eventosAcademicos[position], context, userRole)
+        holder.bind(eventosAcademicos[position], context, userRole, onEditButtonClick)
     }
 
     override fun getItemCount(): Int = eventosAcademicos.size
 
     class EventoAcademicoViewHolder(private val binding: ItemEventoAcademicoBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(eventoAcademico: EventoAcademico, context: Context, userRole: String?) {
+        fun bind(eventoAcademico: EventoAcademico, context: Context, userRole: String?, onEditButtonClick: (EventoAcademico) -> Unit) {
             binding.eventoAcademico = eventoAcademico
             binding.executePendingBindings()
 
@@ -45,7 +46,7 @@ class EventosAcademicosAdapter(
                 binding.deleteButton.visibility = View.VISIBLE
 
                 binding.editButton.setOnClickListener {
-                    // Code to edit the event
+                    onEditButtonClick(eventoAcademico)
                 }
 
                 binding.deleteButton.setOnClickListener {

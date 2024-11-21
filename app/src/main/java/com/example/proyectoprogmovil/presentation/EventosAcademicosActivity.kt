@@ -24,7 +24,6 @@ class EventosAcademicosActivity : AppCompatActivity() {
     private lateinit var addButton: Button
     private var userRole: String? = null
 
-
     private val eventosList = mutableListOf<EventoAcademico>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +43,6 @@ class EventosAcademicosActivity : AppCompatActivity() {
             addButton.visibility = View.GONE
         }
 
-
         initComponents()
         initUI()
         fetchEventosAcademicos()
@@ -55,12 +53,12 @@ class EventosAcademicosActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        eventosAcademicosAdapter = EventosAcademicosAdapter(this, listOf(), userRole)
+        eventosAcademicosAdapter = EventosAcademicosAdapter(this, listOf(), userRole, ::onEditButtonClick)
         rvEventosAcademicos.layoutManager = LinearLayoutManager(this)
         rvEventosAcademicos.adapter = eventosAcademicosAdapter
     }
 
-    //Adding an event
+    //Showing the dialog to add an event
     private fun showAddEventDialog() {
         val dialog = Dialog(this)
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_add_event, null)
@@ -104,11 +102,49 @@ class EventosAcademicosActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    private fun showEditEventDialog(event: EventoAcademico) {
+        val dialog = Dialog(this)
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_add_event, null)
+        dialog.setContentView(view)
+
+        val etEventName = view.findViewById<EditText>(R.id.etEventName)
+        val etEventDescription = view.findViewById<EditText>(R.id.etEventDescription)
+        val etEventDescriptionExtense = view.findViewById<EditText>(R.id.etEventDescriptionExtense)
+        val etEventPlace = view.findViewById<EditText>(R.id.etEventPlace)
+        val etEventDate = view.findViewById<EditText>(R.id.etEventDate)
+        val etEventTime = view.findViewById<EditText>(R.id.etEventTime)
+        val btnEditEvent = view.findViewById<Button>(R.id.btnConfirmation)
+
+        etEventName.setText(event.eventName)
+        etEventDescription.setText(event.eventDescription)
+        etEventDescriptionExtense.setText(event.eventDescriptionExtense)
+        etEventPlace.setText(event.eventPlace)
+        etEventDate.setText(event.eventDate)
+        etEventTime.setText(event.eventTime)
+
+        btnEditEvent.setOnClickListener {
+            val updatedEvent = event.copy(
+                eventName = etEventName.text.toString().trim(),
+                eventDescription = etEventDescription.text.toString().trim(),
+                eventDescriptionExtense = etEventDescriptionExtense.text.toString().trim(),
+                eventPlace = etEventPlace.text.toString().trim(),
+                eventDate = etEventDate.text.toString().trim(),
+                eventTime = etEventTime.text.toString().trim()
+            )
+
+            updateEventInFirestore(updatedEvent)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
     private fun addEventToFirestore(event: EventoAcademico) {
         val db = FirebaseFirestore.getInstance()
         db.collection("eventos-academicos")
             .add(event)
-            .addOnSuccessListener {
+            .addOnSuccessListener { documentReference ->
+                event.documentId = documentReference.id
                 eventosList.add(event)
                 eventosAcademicosAdapter.notifyDataSetChanged()
             }
@@ -117,15 +153,43 @@ class EventosAcademicosActivity : AppCompatActivity() {
             }
     }
 
-    private fun fetchEventosAcademicos() {
-        repository.fetchEventosAcademicos(
-            onSuccess = { eventos ->
-                eventosAcademicosAdapter.eventosAcademicos = eventos
-                eventosAcademicosAdapter.notifyDataSetChanged()
-
-            },
-            onFailure = { exception ->
+    private fun updateEventInFirestore(event: EventoAcademico) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("eventos-academicos")
+            .document(event.documentId)
+            .set(event)
+            .addOnSuccessListener {
+                val index = eventosList.indexOfFirst { it.documentId == event.documentId }
+                if (index != -1) {
+                    eventosList[index] = event
+                    eventosAcademicosAdapter.notifyItemChanged(index)
+                }
             }
-        )
+            .addOnFailureListener { e ->
+                // Handle failure
+            }
+    }
+
+    private fun fetchEventosAcademicos() {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("eventos-academicos")
+            .get()
+            .addOnSuccessListener { result ->
+                eventosList.clear()
+                for (document in result) {
+                    val event = document.toObject(EventoAcademico::class.java)
+                    event.documentId = document.id
+                    eventosList.add(event)
+                }
+                eventosAcademicosAdapter.eventosAcademicos = eventosList
+                eventosAcademicosAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+            }
+    }
+
+    private fun onEditButtonClick(event: EventoAcademico) {
+        showEditEventDialog(event)
     }
 }

@@ -1,6 +1,5 @@
 package com.example.proyectoprogmovil.presentation
 
-
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +13,7 @@ import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.presentation.adapters.EventosCulturalesAdapter
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
 import com.example.proyectoprogmovil.data.EventosCulturalesRepositoryImp
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 import com.google.firebase.firestore.FirebaseFirestore
 
 class EventosCulturalesActivity : AppCompatActivity() {
@@ -54,7 +54,7 @@ class EventosCulturalesActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        eventosCulturalesAdapter = EventosCulturalesAdapter(this, listOf(), userRole)
+        eventosCulturalesAdapter = EventosCulturalesAdapter(this, listOf(), userRole, ::onEditButtonClick)
         rvEventosCulturales.layoutManager = LinearLayoutManager(this)
         rvEventosCulturales.adapter = eventosCulturalesAdapter
     }
@@ -103,12 +103,50 @@ class EventosCulturalesActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    private fun showEditEventDialog(event: EventoCultural) {
+        val dialog = Dialog(this)
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_add_event, null)
+        dialog.setContentView(view)
+
+        val etEventName = view.findViewById<EditText>(R.id.etEventName)
+        val etEventDescription = view.findViewById<EditText>(R.id.etEventDescription)
+        val etEventDescriptionExtense = view.findViewById<EditText>(R.id.etEventDescriptionExtense)
+        val etEventPlace = view.findViewById<EditText>(R.id.etEventPlace)
+        val etEventDate = view.findViewById<EditText>(R.id.etEventDate)
+        val etEventTime = view.findViewById<EditText>(R.id.etEventTime)
+        val btnEditEvent = view.findViewById<Button>(R.id.btnConfirmation)
+
+        etEventName.setText(event.eventName)
+        etEventDescription.setText(event.eventDescription)
+        etEventDescriptionExtense.setText(event.eventDescriptionExtense)
+        etEventPlace.setText(event.eventPlace)
+        etEventDate.setText(event.eventDate)
+        etEventTime.setText(event.eventTime)
+
+        btnEditEvent.setOnClickListener {
+            val updatedEvent = event.copy(
+                eventName = etEventName.text.toString().trim(),
+                eventDescription = etEventDescription.text.toString().trim(),
+                eventDescriptionExtense = etEventDescriptionExtense.text.toString().trim(),
+                eventPlace = etEventPlace.text.toString().trim(),
+                eventDate = etEventDate.text.toString().trim(),
+                eventTime = etEventTime.text.toString().trim()
+            )
+
+            updateEventInFirestore(updatedEvent)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
     //Adding the event to Firestore
     private fun addEventToFirestore(event: EventoCultural) {
         val db = FirebaseFirestore.getInstance()
         db.collection("eventos-culturales")
             .add(event)
-            .addOnSuccessListener {
+            .addOnSuccessListener { documentReference ->
+                event.documentId = documentReference.id
                 eventosList.add(event)
                 eventosCulturalesAdapter.notifyDataSetChanged()
             }
@@ -117,15 +155,43 @@ class EventosCulturalesActivity : AppCompatActivity() {
             }
     }
 
-    private fun fetchEventosCulturales() {
-        repository.fetchEventosCulturales(
-            onSuccess = { eventos ->
-                eventosCulturalesAdapter.eventosCulturales = eventos
-                eventosCulturalesAdapter.notifyDataSetChanged()
-            },
-            onFailure = { exception ->
-                // Handle the error
+    private fun updateEventInFirestore(event: EventoCultural) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("eventos-culturales")
+            .document(event.documentId)
+            .set(event)
+            .addOnSuccessListener {
+                val index = eventosList.indexOfFirst { it.documentId == event.documentId }
+                if (index != -1) {
+                    eventosList[index] = event
+                    eventosCulturalesAdapter.notifyItemChanged(index)
+                }
             }
-        )
+            .addOnFailureListener { e ->
+                // Handle failure
+            }
+    }
+
+    private fun fetchEventosCulturales() {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("eventos-culturales")
+            .get()
+            .addOnSuccessListener { result ->
+                eventosList.clear()
+                for (document in result) {
+                    val event = document.toObject(EventoCultural::class.java)
+                    event.documentId = document.id
+                    eventosList.add(event)
+                }
+                eventosCulturalesAdapter.eventosCulturales = eventosList
+                eventosCulturalesAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+            }
+    }
+
+    private fun onEditButtonClick(event: EventoCultural) {
+        showEditEventDialog(event)
     }
 }

@@ -90,7 +90,7 @@ Además, tendremos un DJ en vivo, propuesta gastronómica estadounidense y un Ho
 \n\n
 🎸 ¡Vive la energía, la pasión y la magia del rock en cada acorde! 🎸 #4deJulio #RockAndRoll #ConciertoInolvidable #Celebración #DomínicoAmericano 🇺🇸🎸"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linealLayout1">
 
