@@ -7,20 +7,21 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
+import com.example.proyectoprogmovil.data.UserRepository
+import com.example.proyectoprogmovil.domain.RegisterUseCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var registerUseCase: RegisterUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        val userRepository = UserRepository(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance())
+        registerUseCase = RegisterUseCase(userRepository)
 
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
@@ -38,28 +39,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser(email: String, password: String, name: String, phone: String) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    if (user != null) {
-                        addUserInformation(user.uid, "user", name, phone) // Asignar rol de usuario por defecto
-                        Toast.makeText(this, "¡Registro exitoso!", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this, LoginActivity::class.java))
-                        finish()
-                    }
-                } else {
-                    Toast.makeText(this, "Favor llenar todos los campos.", Toast.LENGTH_LONG).show()
-                }
-            }
-    }
-
-    private fun addUserInformation(userId: String, role: String, name: String, phone: String) {
-        val user = hashMapOf(
-            "role" to role,
-            "name" to name,
-            "phone" to phone
-        )
-        db.collection("users").document(userId).set(user)
+        registerUseCase.execute(email, password, name, phone, {
+            Toast.makeText(this, "¡Registro exitoso!", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }, { exception ->
+            Toast.makeText(this, "Favor llenar todos los campos.", Toast.LENGTH_LONG).show()
+        })
     }
 }
