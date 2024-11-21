@@ -31,11 +31,6 @@ class DetallesDeEventoAcademicoActivity: AppCompatActivity() {
         initComponents()
         initListeners()
         displayAcademicEventDetails(eventoAcademico)
-
-
-//        val eventosAcademicosActivity = EventosAcademicosActivity()
-//        val eventoAcademico = eventosAcademicosActivity.getEventoAcademicoById(eventId)
-
     }
 
     private fun displayAcademicEventDetails(eventoAcademico: EventoAcademico?) {

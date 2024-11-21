@@ -7,17 +7,20 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
+import com.example.proyectoprogmovil.data.AuthRepository
+import com.example.proyectoprogmovil.domain.LoginUseCase
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
+    private lateinit var loginUseCase: LoginUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        auth = FirebaseAuth.getInstance()
+        val authRepository = AuthRepository(FirebaseAuth.getInstance())
+        loginUseCase = LoginUseCase(authRepository)
 
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
@@ -36,18 +39,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    if (user != null) {
-                        Toast.makeText(this, "¡Acceso exitoso!", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this, MenuPrincipal::class.java))
-                        finish()
-                    }
-                } else {
-                    Toast.makeText(this, "Correo o contraseña incorrectos, verificar que el correo haya sido registrado.", Toast.LENGTH_LONG).show()
-                }
-            }
+        loginUseCase.execute(email, password, {
+            Toast.makeText(this, "¡Acceso exitoso!", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, MenuPrincipal::class.java))
+            finish()
+        }, { exception ->
+            Toast.makeText(this, "Correo o contraseña incorrectos, verificar que el correo haya sido registrado.", Toast.LENGTH_LONG).show()
+        })
     }
 }
