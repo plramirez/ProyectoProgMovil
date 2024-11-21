@@ -28,12 +28,12 @@ class EventosAcademicosViewHolder (view: View): RecyclerView.ViewHolder(view) {
         tvHoraEventoCultural.text = eventoAcademico.eventTime
         tvLugarEventoCultural.text = eventoAcademico.eventPlace
 
-        ivEnterArrow.setOnClickListener {
-            val intent = Intent(context, DetallesDeEventoAcademicoActivity::class.java)
-            intent.putExtra("EVENT_ID", eventoAcademico.eventId)
-            Log.i("EventosAcademicosViewHolder", "Click en arrow")
-
-            context.startActivity(intent)
-        }
+//        ivEnterArrow.setOnClickListener {
+//            val intent = Intent(context, DetallesDeEventoAcademicoActivity::class.java)
+//            intent.putExtra("EVENT_ID", eventoAcademico.eventId)
+//            Log.i("EventosAcademicosViewHolder", "Click en arrow")
+//
+//            context.startActivity(intent)
+//        }
     }
 }
