@@ -53,4 +53,25 @@ class EventosCulturalesRepository(private val db: FirebaseFirestore) {
                 onFailure(e)
             }
     }
+
+    fun registerUserForEvent(eventId: String, user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val registrationsRef = db.collection("eventos-culturales").document(eventId).collection("registrations")
+
+        registrationsRef.whereEqualTo("email", user.email).get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    val registration = hashMapOf(
+                        "name" to user.name,
+                        "email" to user.email,
+                        "phone" to user.phone
+                    )
+                    registrationsRef.add(registration)
+                        .addOnSuccessListener { onSuccess() }
+                        .addOnFailureListener { e -> onFailure(e) }
+                } else {
+                    onFailure(Exception("Este usuario ya está registrado en este evento."))
+                }
+            }
+            .addOnFailureListener { e -> onFailure(e) }
+    }
 }

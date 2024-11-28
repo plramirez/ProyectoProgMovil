@@ -6,14 +6,24 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
+import com.example.proyectoprogmovil.data.EventosAcademicosRepository
+import com.example.proyectoprogmovil.data.EventosCulturalesRepository
+import com.example.proyectoprogmovil.data.UserRepository
+import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DetallesDeEvento : AppCompatActivity() {
 
-    private lateinit var btnMapaCampus: Button
     private lateinit var btnRegistrarse: Button
+    private val userRepository = UserRepository(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance())
+    private val eventosCulturalesRepository = EventosCulturalesRepository(FirebaseFirestore.getInstance())
+
+    private lateinit var btnMapaCampus: Button
     private lateinit var tvDETituloEvento: TextView
     private lateinit var ivImagenEvento: ImageView
     private lateinit var tvDEDescripcionExtensaEvento: TextView
@@ -30,6 +40,11 @@ class DetallesDeEvento : AppCompatActivity() {
         initComponents()
         initListeners()
         displayEventDetails(eventoCultural)
+
+        btnRegistrarse = findViewById(R.id.btnRegistrarse)
+        btnRegistrarse.setOnClickListener {
+            registerUserForEvent(eventoCultural)
+        }
     }
 
     private fun displayEventDetails(eventoCultural: EventoCultural?) {
@@ -68,5 +83,19 @@ class DetallesDeEvento : AppCompatActivity() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_register)
         dialog.show()
+    }
+
+    private fun registerUserForEvent(eventoCultural: EventoCultural?) {
+        if (eventoCultural == null) return
+
+        userRepository.getCurrentUser({ user ->
+            eventosCulturalesRepository.registerUserForEvent(eventoCultural.documentId, user, {
+                Toast.makeText(this, "Registro exitoso!", Toast.LENGTH_SHORT).show()
+            }, { e ->
+                Toast.makeText(this, "Registro fallido: ${e.message}", Toast.LENGTH_SHORT).show()
+            })
+        }, { e ->
+            Toast.makeText(this, "Error al recuperar información del usuario: ${e.message}", Toast.LENGTH_SHORT).show()
+        })
     }
 }

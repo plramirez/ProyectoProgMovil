@@ -6,15 +6,22 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoprogmovil.R
 import com.example.proyectoprogmovil.domain.datasealclasses.EventoAcademico
-import com.example.proyectoprogmovil.domain.datasealclasses.EventoCultural
+import com.example.proyectoprogmovil.data.EventosAcademicosRepository
+import com.example.proyectoprogmovil.data.UserRepository
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DetallesDeEventoAcademicoActivity: AppCompatActivity() {
 
-    private lateinit var btnMapaCampus: Button
     private lateinit var btnRegistrarse: Button
+    private val userRepository = UserRepository(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance())
+    private val eventosAcademicosRepository = EventosAcademicosRepository(FirebaseFirestore.getInstance())
+
+    private lateinit var btnMapaCampus: Button
     private lateinit var tvDETituloEvento: TextView
     private lateinit var ivImagenEvento: ImageView
     private lateinit var tvDEDescripcionExtensaEvento: TextView
@@ -31,6 +38,11 @@ class DetallesDeEventoAcademicoActivity: AppCompatActivity() {
         initComponents()
         initListeners()
         displayAcademicEventDetails(eventoAcademico)
+
+        btnRegistrarse = findViewById(R.id.btnRegistrarse)
+        btnRegistrarse.setOnClickListener {
+            registerUserForEvent(eventoAcademico)
+        }
     }
 
     private fun displayAcademicEventDetails(eventoAcademico: EventoAcademico?) {
@@ -72,5 +84,19 @@ class DetallesDeEventoAcademicoActivity: AppCompatActivity() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_register)
         dialog.show()
+    }
+
+    private fun registerUserForEvent(eventoAcademico: EventoAcademico?) {
+        if (eventoAcademico == null) return
+
+        userRepository.getCurrentUser({ user ->
+            eventosAcademicosRepository.registerUserForEvent(eventoAcademico.documentId, user, {
+                Toast.makeText(this, "Registro exitoso!", Toast.LENGTH_SHORT).show()
+            }, { e ->
+                Toast.makeText(this, "Registro fallido: ${e.message}", Toast.LENGTH_SHORT).show()
+            })
+        }, { e ->
+            Toast.makeText(this, "Error al recuperar información del usuario: ${e.message}", Toast.LENGTH_SHORT).show()
+        })
     }
 }
